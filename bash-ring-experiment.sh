@@ -7,19 +7,21 @@ KEY=/home/.ssh/aws_keypair.pem
                 scp -i $KEY $NUMBER_FILE xxx.xxx.xx.xx:/tmp/file #copy the file to Sauron
         fi
         if [[ $MYIP = "xxx.xxx.xx.xx" ]]; then #IP from Sauron
-                scp -i $KEY $FILE xxx.xxx.xx.xx:/tmp/file #copy the file to Legolas
+                scp -i $KEY $NUMBER_FILE xxx.xxx.xx.xx:/tmp/file #copy the file to Legolas
         fi
-        if [[ $MYIP = "xxx.xxx.xx.xx" ]]; then
-                scp -i $KEY $FILE xxx.xxx.xx.xx:/tmp/file
+        if [[ $MYIP = "xxx.xxx.xx.xx" ]]; then #IP from Legolas
+                scp -i $KEY $NUMBER_FILE xxx.xxx.xx.xx:/tmp/file #IP from Gollum
         fi
-        if [[ $MYIP = "xxx.xxx.xx.xx" ]]; then
-                scp -i $KEY $FILE xxx.xxx.xx.xx:/tmp/file
+        if [[ $MYIP = "xxx.xxx.xx.xx" ]]; then #IP from Gollum
+                scp -i $KEY $NUMBER_FILE xxx.xxx.xx.xx:/tmp/file #Back to Frodo
         fi
+# We still need to increment the file before it passes to the next server.
+# Should we add the loop from line 26 on top of the code instead?
 
         cp x to y >> response.txt
-        check reponse.txt if status is suceessful
+        check reponse.txt if status is successful
         output = reponse.txt
-        rm $FILE
+        rm $NUMBER_FILE
 
 
 #For list of servers and file to be looped & incremented
@@ -35,7 +37,7 @@ NUMBER_FILE= /path/to/NUMBER_FILE.txt
 for 1 = 1 ((i=0; i<4; i++)); do
   echo $i
   sleep 10
-done
+done #Sammy asked us to finish this block
 
 number_file.sh
 
