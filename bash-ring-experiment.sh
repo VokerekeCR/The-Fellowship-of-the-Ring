@@ -6,14 +6,37 @@ KEY=/home/.ssh/aws_keypair.pem
         if [[ $MYIP = "192.168.10.230" ]]; then #IP from Frodo
                 scp -i $KEY $NUMBER_FILE xxx.xxx.xx.xx:/tmp/file #copy the file to Sauron
         fi
+        if [ $? -eq 0 ]; then
+            echo File share successful
+        else
+            echo File share failed
+        fi
+
         if [[ $MYIP = "xxx.xxx.xx.xx" ]]; then #IP from Sauron
                 scp -i $KEY $NUMBER_FILE xxx.xxx.xx.xx:/tmp/file #copy the file to Legolas
         fi
+        if [ $? -eq 0 ]; then
+            echo File share successful
+        else
+            echo File share failed
+        fi
+
         if [[ $MYIP = "xxx.xxx.xx.xx" ]]; then #IP from Legolas
                 scp -i $KEY $NUMBER_FILE xxx.xxx.xx.xx:/tmp/file #IP from Gollum
         fi
+        if [ $? -eq 0 ]; then
+            echo File share successful
+        else
+            echo File share failed
+        fi
+
         if [[ $MYIP = "xxx.xxx.xx.xx" ]]; then #IP from Gollum
                 scp -i $KEY $NUMBER_FILE xxx.xxx.xx.xx:/tmp/file #Back to Frodo
+        fi
+        if [ $? -eq 0 ]; then
+            echo File share successful
+        else
+            echo File share failed
         fi
 # We still need to increment the file before it passes to the next server.
 # Should we add the loop from line 26 on top of the code instead?
