@@ -20,6 +20,14 @@ resource "aws_security_group" "my_public_app_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    description = "Allows Ping Inbound Between Instances"
+    from_port = 8 #This is the ICMP type number
+    to_port     = N/A #I'm supposed to input the ICMP code, but there's none on the ping/ICMP IPV4 protocol
+    protocol    = "icmp"
+    cidr_blocks = ["0.0.0.0/0"] 
+  }
+
   # OUTBOUND CONNECTIONS
   egress {
     description = "Allow access to the world"
