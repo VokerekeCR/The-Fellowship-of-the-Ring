@@ -28,3 +28,10 @@ data "aws_subnet" "private" {
     values = [var.private_subnet_name]
   }
 }
+data "local_file" "private_key" {
+  filename = "/Users/victor.okereke/.ssh/aws_keypair.pem"
+}
+
+#data "local_file" "script" {
+#filename = "${path.cwd}/ring.sh"
+#}
